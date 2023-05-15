@@ -11,17 +11,6 @@ router.get('/', async (req, res) => {
   try {
     const readerData = await Product.findAll({
       include: [{ model: Category }, { model: Tag }],
-      // TODO: Add a sequelize literal to get a count of short books
-      // attributes: {
-      //   include: [
-      //     [
-      //       // Use plain SQL to get a count of all short books
-      //       sequelize.literal(
-      //         '(SELECT * FROM product)'
-      //       )
-      //     ],
-      //   ],
-      // },
     });
     res.status(200).json(readerData);
   } catch (err) {
